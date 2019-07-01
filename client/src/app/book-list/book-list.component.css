@@ -1,0 +1,94 @@
+.list{
+  margin-top: 100px;
+  margin-left: 470px;
+  margin-right: 470px;
+}
+.btn-primary{
+  margin-bottom:30px;
+}
+
+.btn-info {
+  margin-top: 10px;
+  margin-bottom:10px;
+}
+
+.fa {
+  margin-top:10px;
+  margin-bottom:10px;
+  padding: 5px;
+}
+.fa-edit{
+  color:#5bc0de;
+}
+
+.fa-fw:active{
+  color:#5bc0de;
+}
+
+.fa-edit:hover{
+  color:blue;
+}
+
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: grey;
+   color: white;
+   text-align: center;
+}
+
+.fa-trash-o{
+  color:red;
+}
+
+.fa-trash-o:hover{
+  color:blue;
+}
+.navbar-dark{
+  height: 50px;
+}
+
+.kev{
+  height: 7em ;
+  margin-left: 470px;
+  margin-right: 470px;
+}
+
+.links{
+  margin-left:20%;
+  margin-bottom:-3%;
+  font-size:30px;
+}
+
+.rechts{
+  margin-right: 20%;
+  margin-bottom:-3%;
+  font-size:30px;
+}
+
+.links:hover {
+  color:#5bc0de;
+}
+
+.links:visited {
+  color:#5bc0de;
+}
+.rechts:hover {
+  color:#5bc0de;
+}
+.dash{
+  font-size:40px;
+  margin-left: 450px;
+}
+.neu{
+  padding-left: 30px;
+  padding-right:30px;
+  font-size:20px;
+}
+.paginate{
+  margin-left: 150%;
+  padding:20px;
+    color:#5bc0de;
+}

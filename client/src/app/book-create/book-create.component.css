@@ -1,0 +1,34 @@
+.form{
+  margin-top: 100px;
+  margin-left: 470px;
+  margin-right: 470px;
+  padding-left: 30px;
+  padding-right: 70px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.head{
+  padding-bottom:40px;
+}
+
+.navbar-dark{
+  height: 50px;
+}
+
+.neu{
+  padding-left: 30px;
+  padding-right:30px;
+  font-size:20px;
+  background-color:#5bc0de;
+}
+
+.dash{
+  font-size:40px;
+  margin-left: 450px;
+}
+
+label{
+ font-size: 15px;
+ font-weight: bold;
+}

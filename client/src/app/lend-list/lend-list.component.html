@@ -1,0 +1,79 @@
+<nav class="navbar navbar-light bg-light">
+  <span class="navbar-brand mb-0 h1 dash">DASHBOARD</span>
+</nav>
+<nav class="navbar navbar-dark bg-dark">
+</nav>
+<div class="navbar navbar-light kev" style="background-color: #DCDCDC;">
+  <a class="navbar-brand links" routerLink="/list">BÜCHER</a>
+  <a class="navbar-brand rechts" routerLink="/lendlist">AUSLEIHEN</a>
+</div>
+<div class="list">
+  <button type="button" class="btn btn-info neu"  routerLink="/createlend">Neu</button>
+  <p>Filter by</p>
+  <form>
+  <div class="form-row align-items-center">
+    <div class="col-auto">
+      <label class="sr-only" for="inlineFormInput"></label>
+      <input type="text" class="form-control mb-2"  name="search" [(ngModel)]="filter" id="inlineFormInput" placeholder="Name">
+    </div>
+  </div>
+</form>
+  <table class="table">
+    <thead style="background-color: #DCDCDC;">
+      <tr>
+        <th (click)="sort('isbn')" scope="col">Buch Name
+        <i class="fa fa-fw fa-sort"></i>
+        </th>
+        <th (click)="sort('name')" scope="col">Vorname
+        <i class="fa fa-fw fa-sort"></i>
+        </th>
+        <th (click)="sort('author')" scope="col">Nachname
+        <i class="fa fa-fw fa-sort"></i>
+        </th>
+        <th (click)="sort('cat')" scope="col">Email
+        <i class="fa fa-fw fa-sort"></i>
+        </th>
+
+        <th (click)="sort('language')" scope="col">Rückgabe Datum
+        <i class="fa fa-fw fa-sort"></i>
+        </th>
+        <th scope="col">Action
+        <i class="fa fa-fw fa-sort"></i>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr scope="row" *ngFor="let lend of lends | filter:filter| orderBy: key : reverse  | paginate: { itemsPerPage: 5, currentPage: p };">
+      <th>{{lend.book_name}}</th>
+        <th>{{lend.firstname}}</th>
+        <th>{{lend.lastname}}</th>
+        <th>{{lend.email}}</th>
+        <th>{{lend.returnDate}}</th>
+        <i class="fa fa-edit" (click)="editLend(lend.id)" style="font-size:30px"></i>
+        <i class="fa fa-trash-o" data-toggle="modal" data-target="#exampleModal" style="font-size:30px"></i>
+        <!-- Modal INFO -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ausleihe wirklich Löschen?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                ...
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal">Abbrechen</button>
+                <button type="button" data-dismiss="modal" class="btn btn-danger" (click)="deleteLend(lend.id)" >Löschen</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </tr>
+    </tbody>
+  </table>
+   <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>

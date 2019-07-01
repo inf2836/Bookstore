@@ -1,0 +1,39 @@
+
+<nav class="navbar navbar-light bg-light">
+  <span class="navbar-brand mb-0 h1 dash">AUSLEIHE BEARBEITEN</span>
+</nav>
+<nav class="navbar navbar-dark bg-dark">
+</nav>
+
+<div class="form">
+  <form [formGroup]="updatedForm">
+    
+  <div class="form-group">
+    <label for="validationTooltip03">Book name</label>
+    <input  type="text" formControlName="book_name" class="form-control" placeholder="" #name>
+  </div>
+
+  <div class="form-group">
+    <label for="validationTooltip03">Vorname</label>
+    <input type="text" formControlName="firstname" class="form-control"  placeholder="" #firstname>
+  </div>
+
+  <div class="form-group">
+    <label for="validationTooltip03">Nachname</label>
+    <input type="text" formControlName="lastname" class="form-control"  placeholder="" #lastname>
+  </div>
+
+  <div class="form-group">
+      <label for="validationTooltip03">E-mail</label>
+    <input type="text" formControlName="email" class="form-control"  placeholder="" #email>
+  </div>
+
+  <div class="form-group">
+    <label for="validationTooltip03">Rückgabe Datum</label>
+    <input type="text" formControlName="returnDate" class="form-control"  placeholder="" #date>
+  </div>
+
+  <button type="button" class="btn btn-info neu" routerLink='/lendlist'>Zurück</button>
+  <button type="button" class="btn btn-info neu" (click)="info()" (click)="updatelend(name.value, firstname.value, lastname.value,email.value, date.value)" >Update</button>
+</form>
+</div>

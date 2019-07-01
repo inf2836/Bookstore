@@ -1,0 +1,8 @@
+{
+    "name": "Library manager API documentation",
+    "version": "1.0.0",
+    "description": "API books list manager",
+    "template": {
+    "forceLanguage": "en"
+    }
+}

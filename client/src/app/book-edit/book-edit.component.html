@@ -1,0 +1,42 @@
+<nav class="navbar navbar-light bg-light">
+  <span class="navbar-brand mb-0 h1 dash">UPDATE BOOK</span>
+</nav>
+<nav class="navbar navbar-dark bg-dark">
+</nav>
+
+<div class="form">
+  <form [formGroup]="updatedForm">
+  <div class="form-group">
+    <label for="validationTooltip03">ISBN Nummer*</label>
+    <input type="text"  formControlName="book_isbn_number" class="form-control" placeholder="ISBN Nummer" #isbn>
+  </div>
+
+  <div class="form-group">
+    <label for="validationTooltip03">Titel*</label>
+    <input  type="text" formControlName="book_name" class="form-control" placeholder="Titel" #titel>
+  </div>
+
+  <div class="form-group">
+    <label for="validationTooltip03">Author*</label>
+    <input type="text" formControlName="book_author" class="form-control"  placeholder="Author" #author>
+  </div>
+
+  <div class="form-group">
+    <label for="validationTooltip03">Kategory*</label>
+    <input type="text" formControlName="category" class="form-control"  placeholder="Category" #category>
+  </div>
+
+  <div class="form-group">
+      <label for="validationTooltip03">Sprache*</label>
+    <input type="text" formControlName="language" class="form-control"  placeholder="Language" #language>
+  </div>
+
+  <div class="form-group">
+    <label for="validationTooltip03">Anzahl*</label>
+    <input type="text" formControlName="quantity" class="form-control"  placeholder="quantity" #quantity>
+  </div>
+
+  <button type="button" class="btn btn-info neu" routerLink='/list'>Zurück</button>
+  <button type="button" class="btn btn-info neu"  (click)="updatebook(isbn.value, titel.value, author.value,category.value, language.value, quantity.value)" >Update</button>
+</form>
+</div>

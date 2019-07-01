@@ -1,0 +1,49 @@
+<nav class="navbar navbar-light bg-light">
+  <span class="navbar-brand mb-0 h1 dash">NEUES BUCH HINZUFÜGEN</span>
+</nav>
+<nav class="navbar navbar-dark bg-dark">
+</nav>
+<div class="form">
+  <form [formGroup]="createForm" name="form" onsubmit="validateForm()" method="post">
+<div class="alert alert-danger">
+  <strong>Achtung!</strong> Bitte alle Pflicht Felder ausfüllen
+</div>
+  <div class="form-group">
+    <label for="validationTooltip03">ISBN Nummer*</label>
+    <input type="text" name ="isbn" formControlName ="book_isbn_number" class="form-control" #isbn required>
+  </div>
+
+  <div class="form-group">
+    <label for="validationTooltip03">Titel*</label>
+    <input  type="text" class="form-control"formControlName ="book_name" #titel required>
+  </div>
+
+  <div class="form-group">
+    <label for="validationTooltip03">Author*</label>
+    <input type="text"  class="form-control" formControlName ="book_author" #author required>
+  </div>
+
+  <div class="form-group">
+    <label for="validationTooltip03">Kategory*</label>
+    <input type="text"  class="form-control"formControlName ="category" #category required>
+  </div>
+
+  <div class="form-group">
+    <label for="inputState">Sprache</label>
+    <select id="inputState" class="form-control" #language>
+      <option selected>Deutsch</option>
+      <option>English</option>
+      <option>Französich</option>
+      <option>Spanisch</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="validationTooltip03">Anzahl*</label>
+    <input type="text"  class="form-control" formControlName ="quantity" #quantity required>
+  </div>
+
+  <button type="button" class="btn btn-info neu" routerLink='/list'>Zurück</button>
+  <button type="button" class="btn btn-info neu"  (click)="addbook(isbn.value, titel.value, author.value,category.value, language.value, quantity.value)">Einfügen</button>
+</form>
+</div>

@@ -1,0 +1,40 @@
+<nav class="navbar navbar-light bg-light">
+  <span class="navbar-brand mb-0 h1 dash">NEUE AUSLEIHE ANLEGEN</span>
+</nav>
+<nav class="navbar navbar-dark bg-dark">
+</nav>
+<div class="form">
+  <form [formGroup]="createForm">
+  <div class="alert alert-danger">
+      <strong>Achtung!</strong> Bitte alle Pflicht Felder ausfüllen
+  </div>
+
+  <div class="form-group">
+    <label for="validationTooltip03">Buch Name*</label>
+    <input type="text" formControlName="book_name" class="form-control" #titel>
+  </div>
+
+  <div class="form-group">
+    <label for="validationTooltip03">Vorname*</label>
+    <input  type="text" class="form-control" #firstname>
+  </div>
+
+  <div class="form-group">
+    <label for="validationTooltip03">Nachname*</label>
+    <input type="text"  class="form-control"  #lastname>
+  </div>
+
+  <div class="form-group">
+    <label for="validationTooltip03">E-mail*</label>
+    <input type="text" placeholder="example@domain.com" class="form-control" #email>
+  </div>
+
+  <div class="form-group">
+    <label for="validationTooltip03">Rückgabe Datum*</label>
+    <input type="text" placeholder="yyyy-mm-dd" class="form-control"  #date>
+  </div>
+
+  <button type="button" class="btn btn-info neu" routerLink='/lendlist'>Zurück</button>
+  <button type="button" class="btn btn-info neu"  (click)="addlend(titel.value, firstname.value, lastname.value, email.value, date.value)">Einfügen</button>
+</form>
+</div>

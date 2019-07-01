@@ -1,0 +1,147 @@
+<nav class="navbar navbar-light bg-light">
+  <span class="navbar-brand mb-0 h1 dash">DASHBOARD</span>
+</nav>
+<nav class="navbar navbar-dark bg-dark">
+</nav>
+<div class="navbar navbar-light kev" style="background-color: #DCDCDC;">
+  <a class="navbar-brand links" routerLink="/list">BÜCHER</a>
+  <a class="navbar-brand rechts" routerLink="/lendlist">AUSLEIHEN</a>
+</div>
+<div class="list">
+  <button type="button" class="btn btn-info neu" data-toggle="modal" data-target="#exampleModal">Neu</button>
+
+  <!--MODAL create -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Neues Buch Hinzufügen</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="createForm" name="form" onsubmit="validateForm()" method="post">
+          <div class="alert alert-danger">
+            <strong>Achtung!</strong> Bitte alle Pflicht Felder ausfüllen
+          </div>
+          <div class="form-group">
+            <label for="validationTooltip03">ISBN Nummer*</label>
+            <input type="text" name ="isbn" formControlName ="book_isbn_number" class="form-control" #isbn required>
+          </div>
+
+          <div class="form-group">
+            <label for="validationTooltip03">Titel*</label>
+            <input  type="text" class="form-control"formControlName ="book_name" #titel required>
+          </div>
+
+          <div class="form-group">
+            <label for="validationTooltip03">Author*</label>
+            <input type="text"  class="form-control" formControlName ="book_author" #author required>
+          </div>
+
+          <div class="form-group">
+            <label for="validationTooltip03">Kategory*</label>
+            <input type="text"  class="form-control"formControlName ="category" #category required>
+          </div>
+
+          <div class="form-group">
+            <label for="inputState">Sprache</label>
+            <select id="inputState" class="form-control" #language>
+              <option selected>Deutsch</option>
+              <option>English</option>
+              <option>Französich</option>
+              <option>Spanisch</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="validationTooltip03">Anzahl*</label>
+            <input type="text"  class="form-control" formControlName ="quantity" #quantity required>
+          </div>
+
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" data-dismiss="modal">Abbrechen</button>
+        <button type="button" class="btn btn-success" data-dismiss="modal"  (click)="addbook(isbn.value, titel.value, author.value,category.value, language.value, quantity.value)">Einfügen</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <p>Filter by</p>
+  <form>
+  <div class="form-row align-items-center">
+    <div class="col-auto">
+      <label class="sr-only" for="inlineFormInput"></label>
+      <input type="text" class="form-control mb-2"  name="search" [(ngModel)]="filter" id="inlineFormInput" placeholder="Name">
+    </div>
+  </div>
+</form>
+  <table class="table">
+    <thead style="background-color: #DCDCDC;">
+      <tr>
+        <th (click)="sort('isbn')" scope="col">ISBN Nummer
+        <i class="fa fa-fw fa-sort"></i>
+        </th>
+        <th (click)="sort('name')" scope="col">Buch Name
+        <i class="fa fa-fw fa-sort"></i>
+        </th>
+        <th (click)="sort('author')" scope="col">Author
+        <i class="fa fa-fw fa-sort"></i>
+        </th>
+        <th (click)="sort('cat')" scope="col">Kategory
+        <i class="fa fa-fw fa-sort"></i>
+        </th>
+
+        <th (click)="sort('language')" scope="col">Sprache
+        <i class="fa fa-fw fa-sort"></i>
+        </th>
+
+        <th (click)="sort('quantity')" scope="col">Anzahl
+        <i class="fa fa-fw fa-sort"></i>
+        </th>
+
+        <th scope="col">Action
+        <i class="fa fa-fw fa-sort"></i>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr scope="row" *ngFor="let book of books | filter:filter| orderBy: key : reverse  | paginate: { itemsPerPage: 5, currentPage: p };">
+      <th>{{book.book_isbn_number}}</th>
+        <th>{{book.book_name}}</th>
+        <th>{{book.book_author}}</th>
+        <th>{{book.category}}</th>
+        <th>{{book.language}}</th>
+        <th>{{book.quantity}}</th>
+          <i class="fa fa-edit" (click)="editBook(book.id)" style="font-size:30px"></i>
+          <i class="fa fa-trash-o" data-toggle="modal" data-target="#exampleModal1" style="font-size:30px"></i>
+          <!-- Modal INFO -->
+          <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel1">Buch wirklich Löschen?</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  ...
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-info" data-dismiss="modal">Abbrechen</button>
+                  <button type="button" data-dismiss="modal" class="btn btn-danger" (click)="deleteBook(book.id)" >Löschen</button>
+                </div>
+              </div>
+            </div>
+          </div>
+      </tr>
+    </tbody>
+  </table>
+   <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
